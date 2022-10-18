@@ -9,13 +9,14 @@
     box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
 
     .app-title {
-        background: #66a217;
-        color: white;
+        background: #ffc72c;
+        color: rgb(79, 62, 17);
         height: 4rem;
         font-size: 1.5em;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-weight: bold;
     }
 
     .content{
