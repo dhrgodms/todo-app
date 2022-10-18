@@ -1,7 +1,8 @@
 .TodoListItem{
     padding: 1rme;
     display: flex;
-    align-items: center;
+    align-items: center; 
+    font-family: 'Poor Story', cursive;
     &:nth-child(even){
         background: #eeeeee;
     }

@@ -7,18 +7,9 @@ function App() {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: "일번",
+      text: "☀️굿모닝~! 오늘도 감사하고 활기찬 하루 시작~!",
       checked: false,
-    },
-    {
-      id: 2,
-      text: "이번",
-      checked: false,
-    },
-    {
-      id: 3,
-      text: "삼번",
-      checked: false,
+      doneTime :""
     },
   ]);
   
@@ -30,6 +21,7 @@ function App() {
       id: nextId.current,
       text,
       checked: false,
+      doneTime:"",
     };
     setTodos((todos)=>todos.concat(todo));
     nextId.current += 1;
@@ -41,12 +33,27 @@ function App() {
       setTodos((todos) => todos.filter((todo) => todo.id !== id));
     }, []
   );
+  
+  const getDate = (todo) => {
+    if(!todo.checked && todo.doneTime===""){
+      const date = new Date();
+      const dateContent = `  ( ${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()} 완료 )`;
+      return todo.text + dateContent;
+    } else return todo.text;
+  };
 
   const onToggle = useCallback(
     (id)=>{
       setTodos((todos) =>
         todos.map((todo) =>
-          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+          todo.id === id
+            ? {
+                ...todo,
+                checked: !todo.checked,
+                text: getDate(todo),
+                doneTime: getDate(todo),
+              }
+            : todo
         )
       );
     },[]
